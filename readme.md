@@ -38,7 +38,7 @@ Dieser Service unterstellt, dass die Datenbankverbindung per JNDI gesetzt ist. F
 
 Der Service kann über git heruntergeladen werden
 
-    git clone ...
+    git clone https://github.com/weberius/sagunskoeln.git
     
 Danach muss er noch installiert werden. Dabei wird vorausgesetzt, dass auf dem Rechner mindestens JAVA 7 und das aktuellen maven installiert ist. 
 
