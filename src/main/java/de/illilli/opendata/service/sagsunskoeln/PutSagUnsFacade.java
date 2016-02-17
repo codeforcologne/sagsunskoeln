@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import de.illilli.opendata.service.Facade;
 
-public class InsertSagUnsFacade implements Facade {
+public class PutSagUnsFacade implements Facade {
 
 	public String getJson() throws JsonProcessingException {
 		// TODO Auto-generated method stub

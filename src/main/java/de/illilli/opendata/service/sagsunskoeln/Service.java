@@ -17,8 +17,6 @@ import org.apache.log4j.Logger;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-import de.illilli.opendata.service.Facade;
-
 @Path("/")
 public class Service {
 
@@ -49,10 +47,9 @@ public class Service {
 	@PUT
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("/put")
-	public String putKvbradpositions()
+	public void putKvbradpositions()
 			throws JsonParseException, JsonMappingException, IOException, SQLException, NamingException {
-		Facade facade = new InsertSagUnsFacade();
-		return facade.getJson();
+		new PutSagUnsFacade();
 	}
 
 }
