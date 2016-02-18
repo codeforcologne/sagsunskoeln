@@ -16,7 +16,30 @@ Durch Aufruf dieser Schnittstelle wird eine Abfrage gegen 'https://sags-uns.stad
 
 ## Datenbank
 
-### DDL
+### Ergebnistabelle
+
+    CREATE TABLE sagsuns (
+      id                varchar(16) NOT NULL,
+      status            varchar(16),
+      serviceCode       integer,
+      serviceName       varchar(128),
+      description       varchar(1024),
+      requesteddatetime timestamp,
+      updateddatetime   timestamp,
+      address           varchar(128),
+      mediaurl          varchar(128),
+      statusnotes       varchar(1024),
+      modtime           timestamp DEFAULT current_timestamp
+    );
+    SELECT AddGeometryColumn ('public','sagsuns','geom',4326,'POINT',2);
+
+
+### Steuerungstabelle
+
+	CREATE TABLE sagsunskoeln (
+	    numberofinsert      integer,
+	    modtime      timestamp DEFAULT current_timestamp
+	);
 
 ### Connection
 
