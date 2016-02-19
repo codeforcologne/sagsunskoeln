@@ -264,4 +264,14 @@ public class SagsUnsBo {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "SagsUnsBo [id=" + id + ", status=" + status + ", serviceCode=" + serviceCode + ", serviceName="
+				+ serviceName + ", description=" + description + ", agencyResponsible=" + agencyResponsible
+				+ ", serviceNotice=" + serviceNotice + ", addressId=" + addressId + ", requestedDatetime="
+				+ requestedDatetime + ", updatedDatetime=" + updatedDatetime + ", address=" + address + ", zipcode="
+				+ zipcode + ", lat=" + lat + ", lng=" + lng + ", mediaUrl=" + mediaUrl + ", status_notes="
+				+ status_notes + "]";
+	}
+
 }
