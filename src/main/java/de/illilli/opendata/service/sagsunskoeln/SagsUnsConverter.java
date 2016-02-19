@@ -17,6 +17,7 @@ public class SagsUnsConverter {
 	 */
 	public static final String PATTERN = "yyyy-MM-dd'T'HH:mm:ssZ";
 	private DateTimeFormatter dtf = DateTimeFormat.forPattern(PATTERN);
+	public static final int SRID = 4326;
 
 	private SagsUns sagsUns;
 
@@ -65,6 +66,7 @@ public class SagsUnsConverter {
 		double lat = Double.parseDouble(sagsUns.lat);
 		double lng = Double.parseDouble(sagsUns.lng);
 		Point point = new Point(lat, lng);
+		point.setSrid(SagsUnsConverter.SRID);
 		dto.setGeom(new PGgeometry(point));
 		dto.setMediaUrl(sagsUns.media_url);
 		dto.setStatusnotes(sagsUns.status_notes);
