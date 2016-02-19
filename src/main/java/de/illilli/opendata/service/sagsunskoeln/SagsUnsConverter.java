@@ -10,7 +10,7 @@ import org.postgis.Point;
 
 import de.illilli.opendata.service.sagsunskoeln.jdbc.SagsUnsDto;
 
-public class SagsUnsDao {
+public class SagsUnsConverter {
 
 	/**
 	 * 2016-02-16T21:26:17+01:00
@@ -19,7 +19,7 @@ public class SagsUnsDao {
 
 	private SagsUns sagsUns;
 
-	public SagsUnsDao(SagsUns sagsUns) {
+	public SagsUnsConverter(SagsUns sagsUns) {
 		this.sagsUns = sagsUns;
 	}
 

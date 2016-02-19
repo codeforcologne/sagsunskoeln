@@ -37,7 +37,7 @@ public class PutSagUnsFacade {
 		AskFor<SagsUns[]> askFor = new AskForSagsuns();
 		// put to List
 		for (SagsUns sagsUns : askFor.getData()) {
-			SagsUnsDto dto = new SagsUnsDao(sagsUns).getSagsUnsDto();
+			SagsUnsDto dto = new SagsUnsConverter(sagsUns).getSagsUnsDto();
 			// gibt es den Datensatz bereits?
 			boolean exists = false;
 			Select<SagsUnsDto> select = new SelectSagsUnsById(dto.getId());
