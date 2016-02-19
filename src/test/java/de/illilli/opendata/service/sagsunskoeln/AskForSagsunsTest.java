@@ -33,12 +33,12 @@ public class AskForSagsunsTest {
 		InputStream inputStream = this.getClass().getResourceAsStream("/sagsuns.json");
 		AskFor<SagsUns[]> askFor = new AskForSagsuns(inputStream);
 		SagsUns[] sagsUnsList = askFor.getData();
-		SagsUns expected = getA1627();
+		SagsUns expected = AskForSagsunsTest.getA1627();
 		SagsUns actual = sagsUnsList[0];
 		Assert.assertEquals(expected, actual);
 	}
 
-	SagsUns getA1627() {
+	public static SagsUns getA1627() {
 
 		SagsUns sagsUns = new SagsUns();
 
