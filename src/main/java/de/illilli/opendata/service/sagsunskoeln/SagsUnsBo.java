@@ -6,7 +6,7 @@ public class SagsUnsBo {
 
 	private String id;
 	private String status;
-	private String serviceCode;
+	private int serviceCode;
 	private String serviceName;
 	private String description;
 	private String agencyResponsible;
@@ -20,9 +20,6 @@ public class SagsUnsBo {
 	private double lng;
 	private String mediaUrl;
 	private String status_notes;
-
-	public SagsUnsBo() {
-	}
 
 	public String getId() {
 		return id;
@@ -40,11 +37,11 @@ public class SagsUnsBo {
 		this.status = status;
 	}
 
-	public String getServiceCode() {
+	public int getServiceCode() {
 		return serviceCode;
 	}
 
-	public void setServiceCode(String serviceCode) {
+	public void setServiceCode(int serviceCode) {
 		this.serviceCode = serviceCode;
 	}
 
@@ -168,7 +165,7 @@ public class SagsUnsBo {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((mediaUrl == null) ? 0 : mediaUrl.hashCode());
 		result = prime * result + ((requestedDatetime == null) ? 0 : requestedDatetime.hashCode());
-		result = prime * result + ((serviceCode == null) ? 0 : serviceCode.hashCode());
+		result = prime * result + serviceCode;
 		result = prime * result + ((serviceName == null) ? 0 : serviceName.hashCode());
 		result = prime * result + ((serviceNotice == null) ? 0 : serviceNotice.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
@@ -226,10 +223,7 @@ public class SagsUnsBo {
 				return false;
 		} else if (!requestedDatetime.equals(other.requestedDatetime))
 			return false;
-		if (serviceCode == null) {
-			if (other.serviceCode != null)
-				return false;
-		} else if (!serviceCode.equals(other.serviceCode))
+		if (serviceCode != other.serviceCode)
 			return false;
 		if (serviceName == null) {
 			if (other.serviceName != null)
