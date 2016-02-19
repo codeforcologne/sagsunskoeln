@@ -1,10 +1,10 @@
 package de.illilli.opendata.service.sagsunskoeln;
 
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.postgis.PGgeometry;
 import org.postgis.Point;
 
@@ -15,7 +15,8 @@ public class SagsUnsConverter {
 	/**
 	 * 2016-02-16T21:26:17+01:00
 	 */
-	public static final String DATE_FORMAT = "yyyy-MM-ddThh24:mm:ss";
+	public static final String PATTERN = "yyyy-MM-dd'T'HH:mm:ssZ";
+	private DateTimeFormatter dtf = DateTimeFormat.forPattern(PATTERN);
 
 	private SagsUns sagsUns;
 
@@ -27,24 +28,15 @@ public class SagsUnsConverter {
 		SagsUnsBo sagsUnsBo = new SagsUnsBo();
 		sagsUnsBo.setId(sagsUns.service_request_id);
 		sagsUnsBo.setStatus(sagsUns.status);
-		sagsUnsBo.setServiceCode(sagsUns.service_code);
+		int serviceCode = Integer.parseInt(sagsUns.service_code);
+		sagsUnsBo.setServiceCode(serviceCode);
 		sagsUnsBo.setServiceName(sagsUns.service_name);
 		sagsUnsBo.setDescription(sagsUns.description);
 		sagsUnsBo.setAgencyResponsible(sagsUns.agency_responsible);
 		sagsUnsBo.setServiceNotice(sagsUns.service_notice);
-		Date requestedDateTime = null;
-		try {
-			requestedDateTime = new SimpleDateFormat(DATE_FORMAT).parse(sagsUns.requested_datetime);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		Date requestedDateTime = dtf.parseDateTime(sagsUns.requested_datetime).toDate();
 		sagsUnsBo.setRequestedDatetime(requestedDateTime);
-		Date updatedDatetime = null;
-		try {
-			updatedDatetime = new SimpleDateFormat(DATE_FORMAT).parse(sagsUns.updated_datetime);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		Date updatedDatetime = dtf.parseDateTime(sagsUns.updated_datetime).toDate();
 		sagsUnsBo.setUpdatedDatetime(updatedDatetime);
 		sagsUnsBo.setAddress(sagsUns.address);
 		sagsUnsBo.setZipcode(sagsUns.zipcode);
@@ -65,21 +57,9 @@ public class SagsUnsConverter {
 		dto.setServiceCode(serviceCode);
 		dto.setServiceName(sagsUns.service_name);
 		dto.setDescription(sagsUns.description);
-		Timestamp requestedDateTime = null;
-		try {
-			requestedDateTime = new Timestamp(
-					new SimpleDateFormat(DATE_FORMAT).parse(sagsUns.requested_datetime).getTime());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		Timestamp requestedDateTime = new Timestamp(dtf.parseDateTime(sagsUns.requested_datetime).toDate().getTime());
 		dto.setRequesteddatetime(requestedDateTime);
-		Timestamp updatedDatetime = null;
-		try {
-			updatedDatetime = new Timestamp(
-					new SimpleDateFormat(DATE_FORMAT).parse(sagsUns.updated_datetime).getTime());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		Timestamp updatedDatetime = new Timestamp(dtf.parseDateTime(sagsUns.updated_datetime).toDate().getTime());
 		dto.setUpdateddatetime(updatedDatetime);
 		dto.setAddress(sagsUns.address);
 		double lat = Double.parseDouble(sagsUns.lat);
