@@ -6,13 +6,17 @@
 
 ## Schnittstellen
 
-### /sagunskoeln/service/put
+### /sagsunskoeln/service/put
 
 Es handelt sich um eine Schnittstelle, die per PUT angesprochen wird:
 
-    curl -X PUT http://localhost:8080/sagunskoeln/service/put 
+    curl -X PUT http://localhost:8080/sagsunskoeln/service/put 
     
 Durch Aufruf dieser Schnittstelle wird eine Abfrage gegen 'https://sags-uns.stadt-koeln.de/georeport/v2/requests.json' gemacht und die dort gefundenen Stellen in die Datenbank geschrieben.
+
+### /sagsunskoeln/service/all
+
+Diese Schnittstelle liefert alle Einträge zurück
 
 ## Datenbank
 
@@ -23,12 +27,12 @@ Durch Aufruf dieser Schnittstelle wird eine Abfrage gegen 'https://sags-uns.stad
       status            varchar(16),
       serviceCode       integer,
       serviceName       varchar(128),
-      description       varchar(1024),
+      description       varchar(2048),
       requesteddatetime timestamp,
       updateddatetime   timestamp,
-      address           varchar(128),
-      mediaurl          varchar(128),
-      statusnotes       varchar(1024),
+      address           varchar(256),
+      mediaurl          varchar(256),
+      statusnotes       varchar(2048),
       modtime           timestamp DEFAULT current_timestamp
     );
     SELECT AddGeometryColumn ('public','sagsuns','geom',4326,'POINT',2);

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -16,6 +17,8 @@ import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+
+import de.illilli.opendata.service.Facade;
 
 @Path("/")
 public class Service {
@@ -50,6 +53,17 @@ public class Service {
 	public void putKvbradpositions()
 			throws JsonParseException, JsonMappingException, IOException, SQLException, NamingException {
 		new PutSagUnsFacade();
+	}
+
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/all")
+	public String getSagsUnsAll()
+			throws JsonParseException, JsonMappingException, IOException, SQLException, NamingException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		Facade facade = new SagsUnsAllFacade();
+		return facade.getJson();
 	}
 
 }
