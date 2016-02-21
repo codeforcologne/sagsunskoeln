@@ -143,7 +143,6 @@ public class SagsUnsDto {
 		result = prime * result + ((geom == null) ? 0 : geom.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((mediaUrl == null) ? 0 : mediaUrl.hashCode());
-		result = prime * result + ((modtime == null) ? 0 : modtime.hashCode());
 		result = prime * result + ((requesteddatetime == null) ? 0 : requesteddatetime.hashCode());
 		result = prime * result + serviceCode;
 		result = prime * result + ((serviceName == null) ? 0 : serviceName.hashCode());
@@ -186,11 +185,6 @@ public class SagsUnsDto {
 			if (other.mediaUrl != null)
 				return false;
 		} else if (!mediaUrl.equals(other.mediaUrl))
-			return false;
-		if (modtime == null) {
-			if (other.modtime != null)
-				return false;
-		} else if (!modtime.equals(other.modtime))
 			return false;
 		if (requesteddatetime == null) {
 			if (other.requesteddatetime != null)
