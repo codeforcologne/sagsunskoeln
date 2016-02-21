@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -53,6 +54,7 @@ public class Service {
 	public void putKvbradpositions()
 			throws JsonParseException, JsonMappingException, IOException, SQLException, NamingException {
 		new PutSagUnsFacade();
+		logger.info("call '" + request.getRequestURI() + "'");
 	}
 
 	@GET
@@ -63,6 +65,19 @@ public class Service {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		Facade facade = new SagsUnsAllFacade();
+		logger.info("call '" + request.getRequestURI() + "'");
+		return facade.getJson();
+	}
+
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/id/{id}")
+	public String getSagsUnsById(@PathParam("id") String id)
+			throws JsonParseException, JsonMappingException, IOException, SQLException, NamingException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		Facade facade = new SagsUnsByIdFacade(id);
+		logger.info("call '" + request.getRequestURI() + "'");
 		return facade.getJson();
 	}
 

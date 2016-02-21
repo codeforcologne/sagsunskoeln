@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import javax.naming.NamingException;
 
-import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import de.illilli.jdbc.Select;
 
@@ -16,6 +16,6 @@ public class SelectSagsUnsById extends Select<SagsUnsDto> {
 	public SelectSagsUnsById(String id) throws SQLException, NamingException, IOException {
 		setQueryString(queryString);
 		Object[] params = new Object[] { id };
-		runSelect(new BeanHandler<SagsUnsDto>(SagsUnsDto.class), params);
+		runSelect(new BeanListHandler<SagsUnsDto>(SagsUnsDto.class), params);
 	}
 }
