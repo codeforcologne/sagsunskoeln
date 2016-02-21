@@ -18,6 +18,10 @@ Durch Aufruf dieser Schnittstelle wird eine Abfrage gegen 'https://sags-uns.stad
 
 Diese Schnittstelle liefert alle Einträge zurück
 
+### /sagsunskoeln/service/id/{id}
+
+Diese Schnittstelle liefert alle Einträge zurück, die mit der übergebenen ID zusammenhängen. Es wird wie bei '/sagsunskoeln/service/all' ein Array zurückgegeben, weil zum Zeitpunkt der Implementierung noch nicht klar war, ob es mehr als einen Rückgabewert geben kann.
+
 ## Datenbank
 
 ### Ergebnistabelle
