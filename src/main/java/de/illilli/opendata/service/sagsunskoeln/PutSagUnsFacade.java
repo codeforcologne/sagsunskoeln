@@ -48,6 +48,10 @@ public class PutSagUnsFacade {
 				// fuege ihn ein
 				new InsertSagsUns(dto);
 				count++;
+			} else if (!selectedDto.equals(dto)) {
+				// fuege ihn ein
+				new InsertSagsUns(dto);
+				count++;
 			}
 		}
 
