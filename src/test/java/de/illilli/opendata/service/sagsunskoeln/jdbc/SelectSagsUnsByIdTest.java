@@ -2,6 +2,7 @@ package de.illilli.opendata.service.sagsunskoeln.jdbc;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.naming.NamingException;
 
@@ -23,10 +24,12 @@ public class SelectSagsUnsByIdTest {
 		// define db-connection
 		ConnectionFactory.setUpConnectionForJndi();
 
-		String id = "A-1627";
+		String id = "A-1682";
 		Select<SagsUnsDto> select = new SelectSagsUnsById(id);
-		SagsUnsDto dto = select.getDbObject();
-		System.out.println(dto);
+		List<SagsUnsDto> dtoList = select.getDbObjectList();
+		for (SagsUnsDto dto : dtoList) {
+			System.out.println(dto);
+		}
 	}
 
 }

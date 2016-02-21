@@ -3,8 +3,11 @@ package de.illilli.opendata.service.sagsunskoeln;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.naming.NamingException;
+
+import org.apache.log4j.Logger;
 
 import de.illilli.jdbc.Select;
 import de.illilli.opendata.service.AskFor;
@@ -23,7 +26,7 @@ import de.illilli.opendata.service.sagsunskoeln.jdbc.SelectSagsUnsById;
  * Vorgehensweise:
  * <ol>
  * <li>Abfrage der Sagsuns-Werte über AskForSagsuns()</li>
- * <li>Prüfung, ob der Datensatz bereits behoben wurde.</li>
+ * <li>Prüfung, ob der Datensatz bereits erhoben wurde.</li>
  * <li>Ggf. Speichern eines Datensatzes in der Tabelle</li>
  * <li>Abschliessend: Speichern des Status dieser Operation</li>
  * </ol>
@@ -31,30 +34,57 @@ import de.illilli.opendata.service.sagsunskoeln.jdbc.SelectSagsUnsById;
  */
 public class PutSagUnsFacade {
 
-	int count = 0;
+	private static final Logger logger = Logger.getLogger(PutSagUnsFacade.class);
 
+	private int count = 0;
+	private AskFor<SagsUns[]> askFor;
+
+	/**
+	 * Get Data from remote Location. Use AskForSagsuns.
+	 * 
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 * @throws SQLException
+	 * @throws NamingException
+	 * @see AskForSagsuns
+	 */
 	public PutSagUnsFacade() throws MalformedURLException, IOException, SQLException, NamingException {
+		askFor = new AskForSagsuns();
+		putToList();
+	}
 
-		// get Data
-		AskFor<SagsUns[]> askFor = new AskForSagsuns();
+	/**
+	 * Get Data from anywhere.
+	 * 
+	 * @param askFor
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 * @throws SQLException
+	 * @throws NamingException
+	 */
+	public PutSagUnsFacade(AskFor<SagsUns[]> askFor)
+			throws MalformedURLException, IOException, SQLException, NamingException {
+		putToList();
+	}
+
+	void putToList() throws SQLException, NamingException, IOException {
 		// put to List
 		for (SagsUns sagsUns : askFor.getData()) {
 			SagsUnsDto dto = new SagsUnsConverter(sagsUns).getSagsUnsDto();
-			// gibt es den Datensatz bereits?
-			boolean exists = false;
 			Select<SagsUnsDto> select = new SelectSagsUnsById(dto.getId());
-			SagsUnsDto selectedDto = select.getDbObject();
-			if (selectedDto == null) {
-				// fuege ihn ein
+			List<SagsUnsDto> dtoList = select.getDbObjectList();
+			if (dtoList == null) {
+				// dataset doesn't exists: insert
 				new InsertSagsUns(dto);
+				logger.debug("insert new data: " + dto.toString());
 				count++;
-			} else if (!selectedDto.equals(dto)) {
-				// fuege ihn ein
+			} else if (!dtoList.contains(dto)) {
+				// dataset exists, but differs from dto: insert
 				new InsertSagsUns(dto);
+				logger.debug("insert different data: " + dto.toString());
 				count++;
 			}
 		}
-
 		// vermerken, dass Daten geschrieben wurde
 		new InsertLastRunToDb(count);
 	}
