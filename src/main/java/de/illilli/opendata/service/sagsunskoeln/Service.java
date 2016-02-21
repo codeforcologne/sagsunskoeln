@@ -81,4 +81,15 @@ public class Service {
 		return facade.getJson();
 	}
 
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/logging")
+	public String getSagsUnsLogging()
+			throws JsonParseException, JsonMappingException, IOException, SQLException, NamingException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		Facade facade = new LoggingFacade();
+		logger.info("call '" + request.getRequestURI() + "'");
+		return facade.getJson();
+	}
 }

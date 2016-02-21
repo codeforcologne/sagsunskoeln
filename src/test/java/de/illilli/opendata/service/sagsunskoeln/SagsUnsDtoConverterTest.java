@@ -18,7 +18,7 @@ public class SagsUnsDtoConverterTest {
 	public void testGetLat() {
 		SagsUnsDto sagsUns = SagsUnsDtoConverterTest.sagsUnsA1627();
 		SagsUnsDtoConverter converter = new SagsUnsDtoConverter(sagsUns);
-		SagsUnsBo bo = converter.getSagsUnsBo();
+		SagsUnsBo bo = converter.getData();
 		Double expected = new Double(50.9384079215);
 		Double actual = bo.getLat();
 		Assert.assertEquals(expected, actual);
@@ -28,7 +28,7 @@ public class SagsUnsDtoConverterTest {
 	public void testGetLng() {
 		SagsUnsDto sagsUns = SagsUnsDtoConverterTest.sagsUnsA1627();
 		SagsUnsDtoConverter converter = new SagsUnsDtoConverter(sagsUns);
-		SagsUnsBo bo = converter.getSagsUnsBo();
+		SagsUnsBo bo = converter.getData();
 		Double expected = new Double(6.83454483747);
 		Double actual = bo.getLng();
 		Assert.assertEquals(expected, actual);

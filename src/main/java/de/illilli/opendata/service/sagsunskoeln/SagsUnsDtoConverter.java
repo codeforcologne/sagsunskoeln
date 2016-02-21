@@ -12,7 +12,7 @@ public class SagsUnsDtoConverter {
 		this.sagsUns = sagsUns;
 	}
 
-	public SagsUnsBo getSagsUnsBo() {
+	public SagsUnsBo getData() {
 		SagsUnsBo sagsUnsBo = new SagsUnsBo();
 		sagsUnsBo.setId(sagsUns.getId());
 		sagsUnsBo.setStatus(sagsUns.getStatus());

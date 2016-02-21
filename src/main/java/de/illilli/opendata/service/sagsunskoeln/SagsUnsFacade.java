@@ -15,7 +15,7 @@ public abstract class SagsUnsFacade implements Facade {
 
 	public SagsUnsFacade(List<SagsUnsDto> dtoList) {
 		for (SagsUnsDto dto : dtoList) {
-			sagUnsList.add(new SagsUnsDtoConverter(dto).getSagsUnsBo());
+			sagUnsList.add(new SagsUnsDtoConverter(dto).getData());
 		}
 	}
 
