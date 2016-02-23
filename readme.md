@@ -69,6 +69,10 @@ Dieser Service unterstellt, dass die Datenbankverbindung per JNDI gesetzt ist. F
       maxIdle="10"
       validationQuery="select 1" />
 
+### DB-Driver
+
+Des weiteren muss der relevante JDBC-Treiber im Tomcat ins Verzeichnis `$CATALINA_HOME/lib` (z.B. /tomcat/lib/) kopiert werden. Vergleiche iach vgl. [JNDI Datasource HOW-TO](https://tomcat.apache.org/tomcat-7.0-doc/jndi-datasource-examples-howto.html). Der Treiber kann unter [Postgres JDBC Driver Download](https://jdbc.postgresql.org/download.html) heruntergeladen werden.  
+
 ## Installation
 
 Der Service kann über git heruntergeladen werden
