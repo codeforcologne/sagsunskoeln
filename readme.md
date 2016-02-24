@@ -22,7 +22,7 @@ Diese Schnittstelle liefert alle Einträge zurück
 
 Diese Schnittstelle liefert alle Einträge zurück, die mit der übergebenen ID zusammenhängen. Es wird wie bei '/sagsunskoeln/service/all' ein Array zurückgegeben, weil zum Zeitpunkt der Implementierung noch nicht klar war, ob es mehr als einen Rückgabewert geben kann.
 
-### /sagsunskoeln/service/logging
+### /sagsunskoeln/service/log
 
 Diese Schnittstelle gibt alle Logging-Einträge in der Steuerungstabelle sagsunskoeln mit dem aktuellsten Wert oben zurück.
 

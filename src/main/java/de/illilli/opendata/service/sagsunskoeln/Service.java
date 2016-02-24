@@ -83,7 +83,7 @@ public class Service {
 
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	@Path("/logging")
+	@Path("/log")
 	public String getSagsUnsLogging()
 			throws JsonParseException, JsonMappingException, IOException, SQLException, NamingException {
 		request.setCharacterEncoding("UTF-8");
