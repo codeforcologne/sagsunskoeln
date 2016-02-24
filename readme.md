@@ -80,12 +80,19 @@ Der Service kann über git heruntergeladen werden
 
     git clone https://github.com/weberius/sagunskoeln.git
     
-Danach muss er noch installiert werden. Dabei wird vorausgesetzt, dass auf dem Rechner mindestens JAVA 7 und das aktuellen maven installiert ist. 
+Danach muss er noch installiert werden. Dabei wird vorausgesetzt, dass auf dem Rechner mindestens JAVA 7 und das aktuelle [maven](https://maven.apache.org/) installiert ist. 
+
+Wechsel ins Verzeichnis
 
     cd sagsunskoeln
+
+Aufruf des build-Skripts:
+
     mvn clean install
     
 Danach befindet sich im Verzeichnis target die Datei 'sagsunskoeln.war'. Diese kann z.B. in einen Tomcat Server deployed werden.
+
+    mv sagsunskoeln.war $CATALINA_HOME/webapps
 
 ## Betrieb
 
@@ -95,7 +102,11 @@ Der Betrieb des Service erfolgt z.B. auf einem Tomcat. Dieser muss, wie oben bes
 
 Um regelmäßig Daten in die Datenbank zu schreiben, muss der Service /sagsunskoeln/service/put regelmäßig aufgerufen werden. Dies geschieht am einfachsten per crontab. Dafür wird die Datei sagsunskoeln.sh auf dem Server z.B. im /home/{user} Verzeichnis abgelegt. Dann wird der Zugriff in der crontab definiert.
 
-    3 3 * * * /home/pi/sagunskoeln.sh
+    sudo EDITOR=vim.tiny crontab -e
+
+Eintrag am Ende der Datei:
+
+    4 4 * * * /home/pi/sagsunskoeln.sh
     
 Führt die Abfrage jede Nacht um 03:03 aus.
 
