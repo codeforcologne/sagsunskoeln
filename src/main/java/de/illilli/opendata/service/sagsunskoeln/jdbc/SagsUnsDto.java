@@ -2,8 +2,6 @@ package de.illilli.opendata.service.sagsunskoeln.jdbc;
 
 import java.sql.Timestamp;
 
-import org.postgis.PGgeometry;
-
 /**
  * <pre>
  * 	CREATE TABLE sagsuns (
@@ -17,9 +15,10 @@ import org.postgis.PGgeometry;
  *	    address           varchar(128),
  *	    mediaurl          varchar(128),
  *	    statusnotes       varchar(1024),
+ *      lat               numeric(3,10),
+ *      lng               numeric(3,10),
  *	    modtime           timestamp DEFAULT current_timestamp
  *	);
- *	SELECT AddGeometryColumn ('public','sagsuns','geom',4326,'POINT',2);
  * 
  * </pre>
  */
@@ -33,9 +32,10 @@ public class SagsUnsDto {
 	private Timestamp requesteddatetime;
 	private Timestamp updateddatetime;
 	private String address;
-	private PGgeometry geom;
 	private String mediaUrl;
 	private String statusnotes;
+	private double lat;
+	private double lng;
 	private Timestamp modtime;
 
 	public String getId() {
@@ -102,14 +102,6 @@ public class SagsUnsDto {
 		this.address = address;
 	}
 
-	public PGgeometry getGeom() {
-		return geom;
-	}
-
-	public void setGeom(PGgeometry geom) {
-		this.geom = geom;
-	}
-
 	public String getMediaUrl() {
 		return mediaUrl;
 	}
@@ -134,15 +126,36 @@ public class SagsUnsDto {
 		this.modtime = modtime;
 	}
 
+	public double getLat() {
+		return lat;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+	public double getLng() {
+		return lng;
+	}
+
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((geom == null) ? 0 : geom.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(lat);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(lng);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((mediaUrl == null) ? 0 : mediaUrl.hashCode());
+		result = prime * result + ((modtime == null) ? 0 : modtime.hashCode());
 		result = prime * result + ((requesteddatetime == null) ? 0 : requesteddatetime.hashCode());
 		result = prime * result + serviceCode;
 		result = prime * result + ((serviceName == null) ? 0 : serviceName.hashCode());
@@ -171,20 +184,24 @@ public class SagsUnsDto {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (geom == null) {
-			if (other.geom != null)
-				return false;
-		} else if (!geom.equals(other.geom))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (Double.doubleToLongBits(lat) != Double.doubleToLongBits(other.lat))
+			return false;
+		if (Double.doubleToLongBits(lng) != Double.doubleToLongBits(other.lng))
+			return false;
 		if (mediaUrl == null) {
 			if (other.mediaUrl != null)
 				return false;
 		} else if (!mediaUrl.equals(other.mediaUrl))
+			return false;
+		if (modtime == null) {
+			if (other.modtime != null)
+				return false;
+		} else if (!modtime.equals(other.modtime))
 			return false;
 		if (requesteddatetime == null) {
 			if (other.requesteddatetime != null)
@@ -220,8 +237,8 @@ public class SagsUnsDto {
 	public String toString() {
 		return "SagsUnsDto [id=" + id + ", status=" + status + ", serviceCode=" + serviceCode + ", serviceName="
 				+ serviceName + ", description=" + description + ", requesteddatetime=" + requesteddatetime
-				+ ", updateddatetime=" + updateddatetime + ", address=" + address + ", geom=" + geom + ", mediaUrl="
-				+ mediaUrl + ", statusnotes=" + statusnotes + ", modtime=" + modtime + "]";
+				+ ", updateddatetime=" + updateddatetime + ", address=" + address + ", mediaUrl=" + mediaUrl
+				+ ", statusnotes=" + statusnotes + ", lat=" + lat + ", lng=" + lng + ", modtime=" + modtime + "]";
 	}
 
 }

@@ -5,8 +5,6 @@ import java.util.Date;
 
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.postgis.PGgeometry;
-import org.postgis.Point;
 
 import de.illilli.opendata.service.sagsunskoeln.jdbc.SagsUnsDto;
 
@@ -64,10 +62,9 @@ public class SagsUnsConverter {
 		dto.setUpdateddatetime(updatedDatetime);
 		dto.setAddress(sagsUns.address);
 		double lat = Double.parseDouble(sagsUns.lat);
+		dto.setLat(lat);
 		double lng = Double.parseDouble(sagsUns.lng);
-		Point point = new Point(lat, lng);
-		point.setSrid(SagsUnsConverter.SRID);
-		dto.setGeom(new PGgeometry(point));
+		dto.setLng(lng);
 		dto.setMediaUrl(sagsUns.media_url);
 		dto.setStatusnotes(sagsUns.status_notes);
 		return dto;

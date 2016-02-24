@@ -27,7 +27,7 @@ public class InsertSagsUns {
 		QueryRunner run = new QueryRunner();
 		inserts = run.update(conn, sql, dto.getId(), dto.getStatus(), dto.getServiceCode(), dto.getServiceName(),
 				dto.getDescription(), dto.getRequesteddatetime(), dto.getUpdateddatetime(), dto.getAddress(),
-				dto.getMediaUrl(), dto.getStatusnotes(), dto.getGeom());
+				dto.getMediaUrl(), dto.getStatusnotes(), dto.getLat(), dto.getLng());
 		conn.close();
 	}
 

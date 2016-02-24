@@ -41,9 +41,10 @@ Diese Schnittstelle gibt alle Logging-Einträge in der Steuerungstabelle sagsuns
       address           varchar(256),
       mediaurl          varchar(256),
       statusnotes       varchar(2048),
+      lat               numeric(3,10),
+      lng               numeric(3,10),
       modtime           timestamp DEFAULT current_timestamp
     );
-    SELECT AddGeometryColumn ('public','sagsuns','geom',4326,'POINT',2);
 
 
 ### Steuerungstabelle
