@@ -41,8 +41,8 @@ Diese Schnittstelle gibt alle Logging-Einträge in der Steuerungstabelle sagsuns
       address           varchar(256),
       mediaurl          varchar(256),
       statusnotes       varchar(2048),
-      lat               numeric(3,10),
-      lng               numeric(3,10),
+      lat               DOUBLE PRECISION,
+      lng               DOUBLE PRECISION,
       modtime           timestamp DEFAULT current_timestamp
     );
 
