@@ -22,6 +22,10 @@ Diese Schnittstelle liefert alle Einträge zurück
 
 Diese Schnittstelle liefert alle Einträge zurück, die mit der übergebenen ID zusammenhängen. Es wird wie bei '/sagsunskoeln/service/all' ein Array zurückgegeben, weil zum Zeitpunkt der Implementierung noch nicht klar war, ob es mehr als einen Rückgabewert geben kann.
 
+### /sagsunskoeln/service/{status} - 
+
+Diese Schnittstelle zeigt mit dem Wert "open" alle Datensätze die im Status "open" an. Mit dem Wert "closed" werden alle Datensätze angezeigt, die im Status "closed" sind. Wird ein anderer Wert angegeben, werden keine Datensätze zurückgeliefert. Die Datensätze werden immer als Liste zurückgegeben, auch wenn es sich nur um einen einzigen handelt.
+
 ### /sagsunskoeln/service/log
 
 Diese Schnittstelle gibt alle Logging-Einträge in der Steuerungstabelle sagsunskoeln mit dem aktuellsten Wert oben zurück.
