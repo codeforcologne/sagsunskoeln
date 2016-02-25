@@ -24,7 +24,18 @@ Diese Schnittstelle liefert alle Einträge zurück, die mit der übergebenen ID 
 
 ### /sagsunskoeln/service/{status} - 
 
-Diese Schnittstelle zeigt mit dem Wert "open" alle Datensätze die im Status "open" an. Mit dem Wert "closed" werden alle Datensätze angezeigt, die im Status "closed" sind. Wird ein anderer Wert angegeben, werden keine Datensätze zurückgeliefert. Die Datensätze werden immer als Liste zurückgegeben, auch wenn es sich nur um einen einzigen handelt.
+Diese Schnittstelle zeigt mit dem Wert "open" alle Datensätze die im Status "open" an. Mit dem Wert "closed" werden alle Datensätze angezeigt, die im Status "closed" sind. Wird ein nicht vorhandener Wert angegeben, werden keine Datensätze zurückgeliefert. Die Datensätze werden immer als Liste zurückgegeben, auch wenn es sich nur um einen einzigen handelt.
+
+### /sagsunskoeln/service/servicecode/{code}
+
+Diese Schnittstelle liefert alle Datensätze mit dem übergebenen Statuscode zurück. Eine Kombination von Statuscode ist nicht möglich. Wird ein nicht vorhandener Wert angegeben, werden keine Datensätze zurückgeliefert. Die Datensätze werden immer als Liste zurückgegeben, auch wenn es sich nur um einen einzigen handelt.
+
+Folgende Codes sind möglich:
+- 17: "Ampel defekt"
+- 10: "Schrottfahrzeuge/Fahrräder"
+- 16: "Straßenbaustellen"
+- 13: "Straßenlaterne defekt"
+- 11: "Wilder Müll"
 
 ### /sagsunskoeln/service/log
 
