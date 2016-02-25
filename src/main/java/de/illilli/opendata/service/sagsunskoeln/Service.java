@@ -86,6 +86,27 @@ public class Service {
 		return facade.getJson();
 	}
 
+	/**
+	 * 
+	 * <p>
+	 * Diese Schnittstelle liefert alle Einträge zurück, die mit der übergebenen
+	 * ID zusammenhängen. Es wird wie bei '/sagsunskoeln/service/all' ein Array
+	 * zurückgegeben, weil zum Zeitpunkt der Implementierung noch nicht klar
+	 * war, ob es mehr als einen Rückgabewert geben kann.
+	 * </p>
+	 * <p>
+	 * Beispiel: <a href="http://localhost:8080/sagsunskoeln/service/id/A-1745">
+	 * /sagsunskoeln/service/id/{id}</a>
+	 * </p>
+	 * 
+	 * @param id
+	 * @return
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws SQLException
+	 * @throws NamingException
+	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("/id/{id}")
@@ -98,6 +119,28 @@ public class Service {
 		return facade.getJson();
 	}
 
+	/**
+	 * 
+	 * <p>
+	 * Diese Schnittstelle liefert alle Einträge zurück, die mit der übergebenen
+	 * ID zusammenhängen. Es wird wie bei '/sagsunskoeln/service/all' ein Array
+	 * zurückgegeben, weil zum Zeitpunkt der Implementierung noch nicht klar
+	 * war, ob es mehr als einen Rückgabewert geben kann.
+	 * </p>
+	 * <p>
+	 * Beispiel:
+	 * <a href="http://localhost:8080/sagsunskoeln/service/status/open">
+	 * /sagsunskoeln/service/status/{status}</a>
+	 * </p>
+	 * 
+	 * @param status
+	 * @return
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws SQLException
+	 * @throws NamingException
+	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("/status/{status}")
@@ -110,6 +153,29 @@ public class Service {
 		return facade.getJson();
 	}
 
+	/**
+	 * 
+	 * <p>
+	 * Diese Schnittstelle liefert alle Datensätze mit dem übergebenen
+	 * Statuscode zurück. Eine Kombination von Statuscode ist nicht möglich.
+	 * Wird ein nicht vorhandener Wert angegeben, werden keine Datensätze
+	 * zurückgeliefert. Die Datensätze werden immer als Liste zurückgegeben,
+	 * auch wenn es sich nur um einen einzigen handelt.
+	 * </p>
+	 * <p>
+	 * Beispiel:
+	 * <a href="http://localhost:8080/sagsunskoeln/service/servicecode/11">
+	 * /sagsunskoeln/service/servicecode/{code}</a>
+	 * </p>
+	 * 
+	 * @param code
+	 * @return
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws SQLException
+	 * @throws NamingException
+	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("/servicecode/{code}")
@@ -122,6 +188,26 @@ public class Service {
 		return facade.getJson();
 	}
 
+	/**
+	 * 
+	 * <p>
+	 * Diese Schnittstelle kombiniert die Abfrage nach status und code.
+	 * </p>
+	 * <p>
+	 * Beispiel: <a href=
+	 * "http://localhost:8080/sagsunskoeln/service/status/open/servicecode/11">
+	 * /sagsunskoeln/service/status/{status}/servicecode/{code}</a>
+	 * </p>
+	 * 
+	 * @param status
+	 * @param code
+	 * @return
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws SQLException
+	 * @throws NamingException
+	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("/status/{status}/servicecode/{code}")
@@ -134,6 +220,25 @@ public class Service {
 		return facade.getJson();
 	}
 
+	/**
+	 * 
+	 * <p>
+	 * Diese Schnittstelle liefert das Datum des letzten Insert und die Anzahl
+	 * der eingefügten Daten zurück.
+	 * </p>
+	 * <p>
+	 * Beispiel:
+	 * <a href="http://localhost:8080/sagsunskoeln/service/log">/sagsunskoeln/
+	 * service/log</a>
+	 * </p>
+	 * 
+	 * @return
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws SQLException
+	 * @throws NamingException
+	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("/log")
