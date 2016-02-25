@@ -83,6 +83,30 @@ public class Service {
 
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/{status}")
+	public String getSagsUnsByStatus(@PathParam("status") String status)
+			throws JsonParseException, JsonMappingException, IOException, SQLException, NamingException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		Facade facade = new SagsUnsByStatusFacade(status);
+		logger.info("call '" + request.getRequestURI() + "'");
+		return facade.getJson();
+	}
+
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/servicecode/{code}")
+	public String getSagsUnsByServiceCode(@PathParam("code") int code)
+			throws JsonParseException, JsonMappingException, IOException, SQLException, NamingException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		Facade facade = new SagsUnsByCodeFacade(code);
+		logger.info("call '" + request.getRequestURI() + "'");
+		return facade.getJson();
+	}
+
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("/log")
 	public String getSagsUnsLogging()
 			throws JsonParseException, JsonMappingException, IOException, SQLException, NamingException {
