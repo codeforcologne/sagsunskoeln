@@ -57,6 +57,23 @@ public class Service {
 		logger.info("call '" + request.getRequestURI() + "'");
 	}
 
+	/**
+	 * <p>
+	 * Diese Schnittstelle liefert alle Einträge zurück.
+	 * </p>
+	 * <p>
+	 * Beispiel:
+	 * <a href="http://localhost:8080/sagsunskoeln/service/all">/sagsunskoeln/
+	 * service/all</a>
+	 * </p>
+	 * 
+	 * @return
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws SQLException
+	 * @throws NamingException
+	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("/all")
@@ -83,7 +100,7 @@ public class Service {
 
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	@Path("/{status}")
+	@Path("/status/{status}")
 	public String getSagsUnsByStatus(@PathParam("status") String status)
 			throws JsonParseException, JsonMappingException, IOException, SQLException, NamingException {
 		request.setCharacterEncoding("UTF-8");
@@ -101,6 +118,18 @@ public class Service {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		Facade facade = new SagsUnsByCodeFacade(code);
+		logger.info("call '" + request.getRequestURI() + "'");
+		return facade.getJson();
+	}
+
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/status/{status}/servicecode/{code}")
+	public String getSagsUnsByStatusAndServiceCode(@PathParam("status") String status, @PathParam("code") int code)
+			throws JsonParseException, JsonMappingException, IOException, SQLException, NamingException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		Facade facade = new SagsUnsByStatusAndCodeFacade(status, code);
 		logger.info("call '" + request.getRequestURI() + "'");
 		return facade.getJson();
 	}

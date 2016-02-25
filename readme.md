@@ -22,7 +22,7 @@ Diese Schnittstelle liefert alle Einträge zurück
 
 Diese Schnittstelle liefert alle Einträge zurück, die mit der übergebenen ID zusammenhängen. Es wird wie bei '/sagsunskoeln/service/all' ein Array zurückgegeben, weil zum Zeitpunkt der Implementierung noch nicht klar war, ob es mehr als einen Rückgabewert geben kann.
 
-### /sagsunskoeln/service/{status} - 
+### /sagsunskoeln/service/status/{status} - 
 
 Diese Schnittstelle zeigt mit dem Wert "open" alle Datensätze die im Status "open" an. Mit dem Wert "closed" werden alle Datensätze angezeigt, die im Status "closed" sind. Wird ein nicht vorhandener Wert angegeben, werden keine Datensätze zurückgeliefert. Die Datensätze werden immer als Liste zurückgegeben, auch wenn es sich nur um einen einzigen handelt.
 
@@ -36,6 +36,10 @@ Folgende Codes sind möglich:
 - 16: "Straßenbaustellen"
 - 13: "Straßenlaterne defekt"
 - 11: "Wilder Müll"
+
+### /sagsunskoeln/service/status/{status}/servicecode/{code}
+
+Diese Schnittstelle kombiniert die Abfrage nach status und code.
 
 ### /sagsunskoeln/service/log
 
