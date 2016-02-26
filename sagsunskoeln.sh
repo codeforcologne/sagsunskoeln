@@ -1,1 +1,1 @@
-curl -X PUT http://localhost:8080/sagunskoeln/service/put
+curl -X PUT http://localhost:8080/sagsunskoeln/service/put

@@ -97,7 +97,7 @@ Des weiteren muss der relevante JDBC-Treiber im Tomcat ins Verzeichnis `$CATALIN
 
 Der Service kann über git heruntergeladen werden
 
-    git clone https://github.com/weberius/sagunskoeln.git
+    git clone https://github.com/codeforcologne/sagsunskoeln.git
     
 Danach muss er noch installiert werden. Dabei wird vorausgesetzt, dass auf dem Rechner mindestens JAVA 7 und das aktuelle [maven](https://maven.apache.org/) installiert ist. 
 
