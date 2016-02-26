@@ -86,6 +86,18 @@ public class Service {
 		return facade.getJson();
 	}
 
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/datatable")
+	public String getSagsUnsDatatable()
+			throws JsonParseException, JsonMappingException, IOException, SQLException, NamingException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		Facade facade = new SagsUnsAllFacade();
+		logger.info("call '" + request.getRequestURI() + "'");
+		return "{\"data\":" + facade.getJson() + "}";
+	}
+
 	/**
 	 * 
 	 * <p>
