@@ -9,7 +9,7 @@ $(document).ready(function() {
 		}, {
 			"data" : "serviceName"
 		}, {
-			"data" : "requestedDatetime"
+			"data" : "updatedDatetime"
 		} ]
 	});
 });
