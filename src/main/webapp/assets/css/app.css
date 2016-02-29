@@ -1,0 +1,12 @@
+html, body, #container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+body {
+  padding-top: 50px;
+}
+#data_wrapper {
+	padding: 20px;
+	margin: 20px;
+}
