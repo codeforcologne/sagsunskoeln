@@ -26,9 +26,9 @@ $(document).ready(function() {
 			table.$('tr.selected').removeClass('selected');
 			$(this).addClass('selected');
 			$("#aboutModal").modal("show");
-			$("#modaltitle").append(table.row( this ).data().id);
-			$("#sagsuns")
-				.append("<h3>" + table.row( this ).data().serviceName + "</h3>")
+			$("#modaltitle").append(table.row( this ).data().id + ": " + table.row( this ).data().serviceName);
+			var sagsuns = $("#sagsuns")
+				.append("<h3>Beschreibung</h3>")
 				.append("<div>" + table.row( this ).data().description + "</div>")
 				.append("<h3>Adresse</h3>")
 				.append("<div>" + table.row( this ).data().address.split(',').join('</br>') + "</div>")
@@ -36,8 +36,15 @@ $(document).ready(function() {
 				.append("<table>")
 				.append("<tr><td style='font-weight: bold;'>Anfrage:&nbsp;</td><td>" + table.row( this ).data().requestedDatetime + "</td></tr>")
 				.append("<tr><td style='font-weight: bold;'>Update:&nbsp;</td><td>" + table.row( this ).data().updatedDatetime + "</td></tr>")
-				.append("</table>")
-				;
+				.append("</table>");
+			if (table.row( this ).data().status_notes) {
+				sagsuns.append("<h3>Status</h3>")
+				.append("<div>" + table.row( this ).data().status_notes + "</div>");
+			}
+			if (table.row( this ).data().mediaUrl) {
+				sagsuns.append("<h3>Media</h3>")
+				.append("<div><img src='" + table.row( this ).data().mediaUrl + "'/></div>");
+			}
 		}
 	});
 });
