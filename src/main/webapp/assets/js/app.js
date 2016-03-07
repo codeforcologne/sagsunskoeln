@@ -1,6 +1,6 @@
 // datatable
 $(document).ready(function() {
-	$('#data').DataTable({
+	var table = $('#data').DataTable({
 		"ajax" : "/sagsunskoeln/service/datatable",
 		"columns" : [ {
 			"data" : "id"
