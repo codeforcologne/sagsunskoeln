@@ -16,18 +16,18 @@ $(document).ready(function() {
 		if ($(this).hasClass('selected')) {
 			var data = table.row( this ).data();
 			$(this).removeClass('selected');
-			$("#markt").empty();
+			$("#sagsuns").empty();
 			$("#links").empty();
 			$("#modaltitle").empty();
 		} else {
-			$("#markt").empty();
+			$("#sagsuns").empty();
 			$("#links").empty();
 			$("#modaltitle").empty();
 			table.$('tr.selected').removeClass('selected');
 			$(this).addClass('selected');
 			$("#aboutModal").modal("show");
 			$("#modaltitle").append(table.row( this ).data().id);
-			$("#markt")
+			$("#sagsuns")
 				.append("<h3>" + table.row( this ).data().serviceName + "</h3>")
 				.append("<div>" + table.row( this ).data().description + "</div>")
 				.append("<h3>Adresse</h3>")
@@ -40,5 +40,4 @@ $(document).ready(function() {
 				;
 		}
 	});
-	
 });
